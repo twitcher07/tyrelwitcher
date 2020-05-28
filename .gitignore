@@ -1,0 +1,22 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+
+# Logs
+*.log
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Composer
+/vendor
+
+
+# npm
+node_modules
+
+# temporary build files
+.tmp

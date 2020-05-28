@@ -1,0 +1,24 @@
+//---------------------------------
+// Tailwind Base
+//---------------------------------
+@tailwind base;
+
+
+//---------------------------------
+// Tailwind Components
+//---------------------------------
+@tailwind components;
+
+
+//-------------------------------------
+// Insert your awesome styles here.
+//-------------------------------------
+.something-awesome {
+	color: magenta;
+}
+
+
+//---------------------------------
+// Tailwind Utilities
+//---------------------------------
+@tailwind utilities;
