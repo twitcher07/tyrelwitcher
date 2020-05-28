@@ -6,7 +6,7 @@
 'use strict';
 
 // Update 'version' if you need to refresh the caches
-var version = '1.0.0'; // change variable to 'version-frp76qr6i' if you want to bust cache;
+var version = '1.0.0'; // change variable to 'version-g8muw074t' if you want to bust cache;
 // A cache for core files like CSS and JavaScript
 var staticCacheName = version + 'static';
 // A cache for pages to store for offline
