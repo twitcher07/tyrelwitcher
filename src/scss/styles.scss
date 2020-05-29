@@ -13,10 +13,16 @@
 //-------------------------------------
 // Insert your awesome styles here.
 //-------------------------------------
-.something-awesome {
-	color: magenta;
+body {
+	min-height: 100vh;
+	background-image: linear-gradient(165deg, #0E2232 35%, #3B4A22 120%);
+
+	@apply font-body antialiased;
 }
 
+.text-faded {
+	color: rgba(255,255,255, .2);
+}
 
 //---------------------------------
 // Tailwind Utilities

@@ -53,7 +53,7 @@ src_generic_assets.forEach((el) => {
 // Clean generated assets
 gulp.task('clean', (cb) => {
 
-  const all_dist = [dist_css, dist_js, dist_img, dist_font, dist_html].concat(dist_generic_assets);
+  const all_dist = [dist_css, dist_js, dist_img, dist_font];
 
   log(`Deleting Files: ${all_dist}`);
 
@@ -75,7 +75,6 @@ gulp.task('generic-assets', (cb) => {
 
 gulp.task('images', () => {
   return gulp.src(src_asset_img, { since: gulp.lastRun('images') })
-    .pipe($.plumber())
     .pipe($.imagemin({
       progressive: true,
       interlaced: true,

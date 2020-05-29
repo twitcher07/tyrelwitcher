@@ -4,6 +4,9 @@ module.exports = {
             inset: {
                 '1/2': '50%',
             },
+            lineHeight: {
+                'tighter': '1.1'
+            }
         },
 
         maxWidth: {
@@ -37,7 +40,7 @@ module.exports = {
             black: '#111111',
             white: '#fff',
 
-            primary  : '#ff0000',
+            primary  : '#1F96F7',
             secondary: '#0000ff',
 
             danger: {
@@ -89,11 +92,12 @@ module.exports = {
         },
 
         fontFamily: {
-            'body': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-            'heading': ['Georgia', 'Times', 'Times New Roman', 'serif'],
+            'body': ['"Muli"', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+            'heading': ['"Arvo"', 'Georgia', 'Times', 'Times New Roman', 'serif'],
         },
 
         fontSize: {
+            'sm' : '.875rem',
             '1'  : '1rem',
             '1p2': '1.2rem',
             '1p4': '1.4rem',
