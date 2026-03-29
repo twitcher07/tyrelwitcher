@@ -38,8 +38,8 @@
     "gulp-uglify": "^3.0.2",
     "postcss-clean": "^1.1.0",
     "tailwindcss": "^1.2.0",
-    "webpack": "^4.42.1",
-    "webpack-stream": "^5.2.1"
+    "webpack": "^5.105.4",
+    "webpack-stream": "^7.0.0"
   },
   "scripts": {
     "serve": "cross-env NODE_ENV=development gulp serve",
