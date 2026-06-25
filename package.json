@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.8.7",
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "autoprefixer": "^9.7.6",
