@@ -23,7 +23,7 @@ const gulp                      = require('gulp'),
       src_asset_font            = path.join(src_folder, '/fonts/**/*.{eot,svg,ttf,woff,woff2}'),
       src_asset_html            = path.join(src_folder, '/**/*.html'),
       // Add any other assets that just need to be copied over to dist folder
-      src_generic_assets        = [],
+      src_generic_assets        = ['src/files/*'],
 
       // Paths you want to output assets to
       dist_folder               = pkg.paths.distFolder, // change to whatever root you want it to be.
@@ -53,11 +53,11 @@ src_generic_assets.forEach((el) => {
 // Clean generated assets
 gulp.task('clean', (cb) => {
 
-  const all_dist = [dist_css, dist_js, dist_img, dist_font];
+  const all_dist = `${dist_folder}**/*`;
 
-  log(`Deleting Files: ${all_dist}`);
+  log(`Deleting Files in ${all_dist}`);
 
-  $.del(all_dist);
+  $.del.sync([all_dist]);
 
   cb();
 });
@@ -74,7 +74,7 @@ gulp.task('generic-assets', (cb) => {
 });
 
 gulp.task('images', () => {
-  return gulp.src(src_asset_img, { since: gulp.lastRun('images') })
+  return gulp.src(src_asset_img)
     .pipe($.imagemin({
       progressive: true,
       interlaced: true,
@@ -115,30 +115,6 @@ gulp.task('inject-css-js', () => {
     .pipe(browserSync.stream());
 });
 
-// Custom PurgeCSS extractor for Tailwind that allows special characters in
-// class names.
-//
-// https://github.com/FullHuman/purgecss#extractor
-const tailwindExtractor = (content) => {
-  return content.match(/[A-z0-9-:\/]+/g);
-}
-
-const postcss_purgecss = purgecss({
-  content: templates_purgeCSS,
-  extractors: [{
-    extractor: tailwindExtractor,
-    extensions: ["html", "twig", "css", "js"]
-  }],
-  whitelist: [
-    // whitelist css selectors
-    'show', 
-  ],
-  whitelistPatterns: [
-    // whitelist using regex patterns
-    /flickity-.*\b/ 
-  ]
-});
-
 gulp.task('postcss', () => {
   const f = $.filter(['.tmp/css/**/*.css'], {restore: true});
 
@@ -147,7 +123,6 @@ gulp.task('postcss', () => {
     .pipe($.if(!isProd, $.sourcemaps.init()))
     .pipe($.postcss([
           $.tailwindcss(),
-          isProd ? postcss_purgecss : false,
           $.autoprefixer(),
           isProd ? $.postcssClean() : false
         ].filter(Boolean)))
@@ -334,6 +309,6 @@ gulp.task('watch', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('generic-assets', 'html', 'service-worker', 'images', 'fonts', 'sass', 'js', 'generate-favicon'), 'inject-css-js'));
 
-gulp.task('serve', gulp.series('clean', gulp.parallel('generic-assets', 'html', 'images', 'fonts', 'sass', 'js'), 'inject-css-js', gulp.parallel('browser-sync', 'watch')));
+gulp.task('serve', gulp.series('clean', gulp.parallel('generic-assets', 'html', 'images', 'fonts', 'sass', 'js', 'generate-favicon'), 'inject-css-js', gulp.parallel('browser-sync', 'watch')));
 
 gulp.task('default', gulp.series('build'));

@@ -1,4 +1,9 @@
 {
+  "name": "tyrelwitcher.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:twitcher07/tyrelwitcher.git"
+  },
   "engines": {
     "node": ">=4"
   },
